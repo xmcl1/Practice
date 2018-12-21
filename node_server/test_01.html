@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		fetch("http://localhost:3003")
+		.then(data => {
+			console.log(data)
+			console.log(data.status)
+			console.log(data.statusText)
+			console.log(data.ok)
+			console.log(data.type)
+			console.log(data.url)
+			console.log(data.body)
+			console.log(data.headers)
+			console.log(data.redirected)
+			return data.json();
+		})
+		.then(data2 => {
+			console.log(data2)
+		});
+	</script>
+</body>
+</html>

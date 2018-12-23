@@ -10,9 +10,14 @@
     <!-- https://codeload.github.com/douban/douban-client/legacy.zip/master -->
     <!-- http://speedtest.tokyo.linode.com/100MB-tokyo.bin -->
     <!-- https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521176852694&di=b94e169374fa2f6a62bffd6f2ebe2563&imgtype=0&src=http%3A%2F%2Fs8.rr.itc.cn%2Fr%2FwapChange%2F20166_1_11%2Fa04n260322701725855.jpg -->
+
+    <!-- 下载方法 -->
     <button onclick="download_form()">下载form方法</button>&ensp;&nbsp;
     <button onclick="download_iframe()">下载iframe方法</button>&ensp;&nbsp;
     <button onclick="download_open()">下载open方法</button>&ensp;&nbsp;
+    
+	<!-- open方法弹窗 -->
+    <button onclick="windowOpen()">open方法打开弹窗</button>&ensp;&nbsp;
     <!-- <button onclick="download_a()">下载a标签方法</button> -->
     <!-- <a href="/前端文档/fengzhuang.js" download="fengzhuang.js">访问磁盘目录</a> -->
     <!-- <a href="/express">访问磁盘目录</a> -->
@@ -23,9 +28,9 @@
 </html>
 <script type="text/javascript">
 // var url = "http://cachefly.cachefly.net/100mb.test";
-// var url = "https://codeload.github.com/douban/douban-client/legacy.zip/master";
+var url = "https://codeload.github.com/douban/douban-client/legacy.zip/master";
 // var url = "http://speedtest.tokyo.linode.com/100MB-tokyo.bin";
-var url = " https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521176852694&di=b94e169374fa2f6a62bffd6f2ebe2563&imgtype=0&src=http%3A%2F%2Fs8.rr.itc.cn%2Fr%2FwapChange%2F20166_1_11%2Fa04n260322701725855.jpg";
+// var url = " https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521176852694&di=b94e169374fa2f6a62bffd6f2ebe2563&imgtype=0&src=http%3A%2F%2Fs8.rr.itc.cn%2Fr%2FwapChange%2F20166_1_11%2Fa04n260322701725855.jpg";
 // form方法下载文件
 function download_form() {
     var form = document.createElement("form");
@@ -48,6 +53,11 @@ function download_iframe() {
 function download_open() {
     // window.open(url);
     window.open("http://www.w3school.com.cn", 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no') 
+}
+// open方法打开新窗口
+function windowOpen() {
+    // window.open(URL,name,features,replace)
+    window.open("http://www.baidu.com", 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no') 
 }
 
 // function download_a(fileName, content) {

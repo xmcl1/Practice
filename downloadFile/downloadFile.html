@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- https://codeload.github.com/douban/douban-client/legacy.zip/master -->
+    <!-- http://speedtest.tokyo.linode.com/100MB-tokyo.bin -->
+    <!-- https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521176852694&di=b94e169374fa2f6a62bffd6f2ebe2563&imgtype=0&src=http%3A%2F%2Fs8.rr.itc.cn%2Fr%2FwapChange%2F20166_1_11%2Fa04n260322701725855.jpg -->
+    <button onclick="download_form()">下载form方法</button>&ensp;&nbsp;
+    <button onclick="download_iframe()">下载iframe方法</button>&ensp;&nbsp;
+    <button onclick="download_open()">下载open方法</button>&ensp;&nbsp;
+    <!-- <button onclick="download_a()">下载a标签方法</button> -->
+    <!-- <a href="/前端文档/fengzhuang.js" download="fengzhuang.js">访问磁盘目录</a> -->
+    <!-- <a href="/express">访问磁盘目录</a> -->
+    <a href="E:/git视频教程（完整版）/1.表严肃讲Git - 创建仓库.FLV">方法一：访问磁盘目录(视频、可下载)</a>&ensp;&nbsp;
+    <a href="file:///E:/git视频教程（完整版）/1.表严肃讲Git - 创建仓库.FLV">方法二：访问磁盘目录(视频、可下载,浏览器中单击element中的链接也可以下载)</a>&ensp;&nbsp;
+</body>
+
+</html>
+<script type="text/javascript">
+// var url = "http://cachefly.cachefly.net/100mb.test";
+// var url = "https://codeload.github.com/douban/douban-client/legacy.zip/master";
+// var url = "http://speedtest.tokyo.linode.com/100MB-tokyo.bin";
+var url = " https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521176852694&di=b94e169374fa2f6a62bffd6f2ebe2563&imgtype=0&src=http%3A%2F%2Fs8.rr.itc.cn%2Fr%2FwapChange%2F20166_1_11%2Fa04n260322701725855.jpg";
+// form方法下载文件
+function download_form() {
+    var form = document.createElement("form");
+    form.setAttribute("style", "display:none");
+    form.setAttribute("method", "get");
+    //action属性设置请求路径,(如有需要,可直接在路径后面跟参数)
+    //例如:htpp://127.0.0.1/test?id=123
+    form.setAttribute("action", url);
+    document.body.appendChild(form)
+    form.submit();
+}
+// iframe方法下载文件
+function download_iframe() {
+    var iframe = document.createElement("iframe");
+    iframe.setAttribute("style", "display:none");
+    iframe.setAttribute("src", url);
+    document.body.appendChild(iframe)
+}
+// open方法下载文件
+function download_open() {
+    // window.open(url);
+    window.open("http://www.w3school.com.cn", 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no') 
+}
+
+// function download_a(fileName, content) {
+//     var aLink = document.createElement('a');
+//     var blob = new Blob([content]);
+//     var evt = document.createEvent("HTMLEvents");
+//     evt.initEvent("click", false, false); //initEvent 不加后两个参数在FF下会报错, 感谢 Barret Lee 的反馈
+//     aLink.download = fileName;
+//     aLink.href = URL.createObjectURL(blob);
+//     aLink.dispatchEvent(evt);
+// }
+</script>

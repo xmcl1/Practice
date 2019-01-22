@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	// 自己总结：这种判断只有双等号（==）下有可能成立
+
+	console.log(undefined == "") //false
+	console.log(undefined === "") //false
+	console.log(undefined == null) //true（成立）
+	console.log(undefined === null) //false
+	console.log(undefined == false) //false
+	console.log(undefined === false) //false
+	console.log(typeof undefined) //undefined
+	console.log(typeof null) //object
+	console.log(typeof true) //boolean
+	console.log(typeof "") //string
+	console.log(typeof 0) //number
+	console.log(0 == false) //true（成立）
+	console.log(0 === false) //false
+	console.log(1 == true) //true（成立）
+	console.log(1 === true) //false
+	console.log(window) //false
+</script>

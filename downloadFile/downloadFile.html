@@ -10,14 +10,13 @@
     <!-- https://codeload.github.com/douban/douban-client/legacy.zip/master -->
     <!-- http://speedtest.tokyo.linode.com/100MB-tokyo.bin -->
     <!-- https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521176852694&di=b94e169374fa2f6a62bffd6f2ebe2563&imgtype=0&src=http%3A%2F%2Fs8.rr.itc.cn%2Fr%2FwapChange%2F20166_1_11%2Fa04n260322701725855.jpg -->
-
     <!-- 下载方法 -->
     <button onclick="download_form()">下载form方法</button>&ensp;&nbsp;
     <button onclick="download_iframe()">下载iframe方法</button>&ensp;&nbsp;
     <button onclick="download_open()">下载open方法</button>&ensp;&nbsp;
-    
-	<!-- open方法弹窗 -->
-    <button onclick="windowOpen()">open方法打开弹窗</button>&ensp;&nbsp;
+    <!-- <button onclick="openDownloadDialog()">弹窗下载文件（不成功）</button>&ensp;&nbsp; -->
+    <!-- open方法弹窗 -->
+    <!-- <button onclick="windowOpen()">open方法打开弹窗</button>&ensp;&nbsp; -->
     <!-- <button onclick="download_a()">下载a标签方法</button> -->
     <!-- <a href="/前端文档/fengzhuang.js" download="fengzhuang.js">访问磁盘目录</a> -->
     <!-- <a href="/express">访问磁盘目录</a> -->
@@ -51,14 +50,34 @@ function download_iframe() {
 }
 // open方法下载文件
 function download_open() {
-    // window.open(url);
-    window.open("http://www.w3school.com.cn", 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no') 
+    // window.open(url,"_blank");
+    window.open("http://www.w3school.com.cn")
 }
 // open方法打开新窗口
 function windowOpen() {
     // window.open(URL,name,features,replace)
-    window.open("http://www.baidu.com", 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no') 
+    window.open("http://www.baidu.com", 'newwindow', 'height=400, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')
 }
+/**
+ * 通用的打开下载对话框方法，没有测试过具体兼容性
+ * @param url 下载地址，也可以是一个blob对象，必选
+ * @param saveName 保存文件名，可选
+ */
+// function openDownloadDialog(saveName) {
+//     // if (typeof url == 'object' && url instanceof Blob) {
+//     //     url = URL.createObjectURL(url); // 创建blob地址
+//     // }
+//     var aLink = document.createElement('a');
+//     aLink.href = url;
+//     aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+//     var event;
+//     if (window.MouseEvent) event = new MouseEvent('click');
+//     else {
+//         event = document.createEvent('MouseEvents');
+//         event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+//     }
+//     aLink.dispatchEvent(event);
+// }
 
 // function download_a(fileName, content) {
 //     var aLink = document.createElement('a');

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width:300px;
+			min-height:50px;
+			background:#eee;
+			border:1px doted;
+		}
+		div:first-child{
+			margin-bottom:10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var box1 = document.getElementById("box1");
+	var box2 = document.getElementById("box2");
+	var arr = [1,2,3,4,5,"A","B","C","D","E"];
+	var arrNew = [];
+	// arrNew = arr.map((item,index)=>{
+	// 	return index+1+"-"+item+1+"\n";
+	// })
+	// box1.innerText = arrNew;
+
+	// slice是将选中部分保存在新数组（arrNew）中，原数组不发生改变
+
+	// arrNew = arr.slice(1)
+	// arrNew = arr.slice(2)
+	// arrNew = arr.slice(-3)//C,D,E
+	// arrNew = arr.slice(-3,-2)//C
+	// arrNew = arr.slice(-3,0)//
+
+	// splice是将选中部分（arrNew）抽离出来，原数组 arr 为抽离后剩余部分（原数组会发生改变）
+
+	// arrNew = arr.splice(0)//1,2,3,4,5,"A","B","C","D","E"
+	// arrNew = arr.splice(0,0)//
+	// arrNew = arr.splice(0,1)//1
+	// arrNew = arr.splice(0,2)//1,2
+	// arrNew = arr.splice(-1)//"E"
+	// arrNew = arr.splice(-1,1)//"E"
+	// arrNew = arr.splice(-1,2)//"E"
+	// arrNew = arr.splice(-1,3)//"E"
+	// arrNew = arr.splice(-2)//"D","E"
+	// arrNew = arr.splice(-2,1)//"D"
+	// arrNew = arr.splice(-2,2)//"D","E"
+	// arrNew = arr.splice(-2,3)//"D","E"
+	// arrNew = arr.splice(-2,4)//"D","E"
+	// arrNew = arr.splice(-10)//1,2,3,4,5,"A","B","C","D","E"
+	// arrNew = arr.splice(-11)//1,2,3,4,5,"A","B","C","D","E"
+	// arrNew = arr.splice(-12)//1,2,3,4,5,"A","B","C","D","E"
+
+	box1.innerText = arr;
+	box2.innerText = arrNew;
+	console.log(arr)
+	console.log(arrNew)
+
+</script>

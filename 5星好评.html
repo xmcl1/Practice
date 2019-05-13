@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:max-content;
+			height:30px;
+			border:1px solid gray;
+		}
+		.box div{
+			width:30px;
+			height:30px;
+			border:1px solid gray;
+			float: left;
+		}
+		.box div:hover{
+			/*background:orange;*/
+			/*transition: .4s; */
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementsByClassName("box")[0];
+	var tempI = null;
+	for(let i=0;i<box.children.length;i++){
+		box.children[i].onmouseover=function(){
+			if(tempI && tempI<i){
+				for(let w=0;w<box.children.length;w++){
+					if(w<=i){
+						box.children[w].style.background = "orange"
+					}
+				}
+				box.onmouseout=function(){
+					for(let w=0;w<box.children.length;w++){
+						if(w<=tempI){
+							box.children[w].style.background = "orange"
+						}
+					}
+				}
+			}
+			for(let j=0;j<box.children.length;j++){
+				if(j<=i){
+					box.children[j].style.background = "orange"
+				}
+			}
+			box.onmouseout=function(){
+				for(let m=0;m<box.children.length;m++){
+					box.children[m].style.background = ""
+				}
+			}
+		}
+		box.children[i].onclick=function(){
+			tempI = i;
+			for(let k=0;k<box.children.length;k++){
+				if(k<=i){
+					box.children[k].style.background = "orange"
+				}
+			}
+			box.onmouseout=""
+		}
+	}
+</script>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.8/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="go">go</button>
+		<button @click="stop">stop</button>
+		<h5>{{msg}}</h5>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			msg:"猥琐发育，别浪！！！",
+			timer:null
+		},
+		mounted(){
+			// this.changeWord();
+		},
+		methods:{
+			go(){
+				if(this.timer != null)return;
+				this.changeWord();
+			},
+			stop(){
+				window.clearInterval(this.timer);
+				this.timer = null;
+			},
+			changeWord(status){
+				// 方法一：(split()、shift()、join()方法结合)
+				// this.timer = setInterval(()=>{
+				// 	this.msg = this.msg.split("");
+				// 	var leftWord = this.msg.shift();
+				// 	this.msg.push(leftWord);
+				// 	var newMsg = this.msg.join("");
+				// 	this.msg = newMsg;
+				// },300);
+
+
+				// 方法二：(slice()方法)
+
+				// this.timer = setInterval(()=>{
+				// 	var leftWord = this.msg.slice(0,1);
+				// 	this.msg = this.msg.slice(1);
+				// 	this.msg = this.msg+leftWord;
+				// },300);
+
+
+				// 方法三：(substring()方法)
+
+				this.timer = setInterval(()=>{
+					var leftWord = this.msg.substring(0,1);
+					var endWord = this.msg.substring(1);
+					this.msg = endWord + leftWord;
+				},300);
+			}
+		}
+	});
+
+
+</script>

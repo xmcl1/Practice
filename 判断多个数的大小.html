@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	function judge(arr,max,min){
+		var temp1;
+		var temp2;
+		var len = arr.length;
+		if(max=="max"){
+			for(var i=0;i<len;i++){
+				for(var j=i+1;j<len;j++){
+					if(arr[i]>arr[j]){
+						temp1=arr[i]
+					}else{
+						temp1=arr[j]
+					}
+				}				
+			}
+		}
+		if(min=="min"){
+			for(var i=0;i<len;i++){
+				for(var j=i+1;j<len;j++){
+					if(arr[i]<arr[j]){
+						temp2=arr[i]
+					}else{
+						temp2=arr[j]
+					}
+				}				
+			}
+		}
+		
+		return temp1+";"+temp2;
+	}
+
+	function caculator(){
+		var arr=[3,2,5,2,1,7,8,6,9,3,5,4];
+		console.log(judge(arr,"max",""));
+	}
+	caculator();
+</script>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text">
+	<div id="msg"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var inp = document.getElementsByTagName("input")[0];
+	var msg = document.getElementById("msg");
+
+	inp.oninput = function (){
+		var str = sum(inp.value)
+		if(str.toString() == "NaN"){
+			msg.innerText = "请输入数字！";
+			return;
+		}
+		if(inp.value.length == 5){
+			msg.innerText = "输入正确！ \n "+str;
+		}else{
+			msg.innerText = "输入长度必须为5位数字！";
+		}
+	}
+
+	function sum(str){
+		var len = str.length;
+		var sum = 0;
+		for(var i=0;i<len;i++){
+			sum += Number(str[i]);
+		}
+		return sum;
+	}
+</script>

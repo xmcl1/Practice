@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="dist/vue.js"></script>
+	<link rel="stylesheet" href="dist/elementUI.css">
+	<script type="text/javascript" src="dist/elementUI.js"></script>
+	<!-- <link rel="stylesheet" href="https://unpkg.com/element-ui@2.3.7/lib/theme-chalk/index.css"> -->
+	<!-- <script src="https://unpkg.com/element-ui@2.3.7/lib/index.js"></script> -->
+</head>
+<body>
+	<div id="app">
+		<el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+		  <el-form-item label="密码" prop="pass">
+		    <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
+		  </el-form-item>
+		  <el-form-item label="确认密码" prop="checkPass">
+		    <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
+		  </el-form-item>
+		  <el-form-item label="年龄" prop="age">
+		    <el-input v-model.number="ruleForm2.age"></el-input>
+		  </el-form-item>
+		  <el-form-item label="邮箱" prop="email">
+		    <el-input v-model.number="ruleForm2.email"></el-input>
+		  </el-form-item>
+		  <el-form-item>
+		    <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+		    <el-button @click="resetForm('ruleForm2')">重置</el-button>
+		  </el-form-item>
+		</el-form>
+
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			ruleForm2: {
+	          pass: '',
+	          checkPass: '',
+	          age: '',
+	          email: ''
+	        },
+	        rules2: {
+	          pass: [
+	            { validator:null, trigger: 'blur' }
+	          ],
+	          checkPass: [
+	            { validator:null, trigger: 'blur' }
+	          ],
+	          age: [
+	            { validator:null, trigger: 'blur' }
+	          ],
+	        //   email: [
+			      // { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+			      // { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+	        //   ]
+	        email: [
+	            { validator:null, trigger: 'blur' }
+	          ]
+	        }
+		},
+		created(){
+			var checkAge = (rule, value, callback) => {
+				if (!value) {
+				  return callback(new Error('年龄不能为空'));
+				}
+				setTimeout(() => {
+				  if (!Number.isInteger(value)) {
+				    callback(new Error('请输入数字值'));
+				  } else {
+				    if (value < 18) {
+				      callback(new Error('必须年满18岁'));
+				    } else {
+				      callback();
+				    }
+				  }
+				}, 1000);
+			};
+			var validatePass = (rule, value, callback) => {
+				if (value === '') {
+				  callback(new Error('请输入密码'));
+				} else {
+				  if (this.ruleForm2.checkPass !== '') {
+				    this.$refs.ruleForm2.validateField('checkPass');
+				  }
+				  callback();
+				}
+			};
+			var validatePass2 = (rule, value, callback) => {
+				if (value === '') {
+				  callback(new Error('请再次输入密码'));
+				} else if (value !== this.ruleForm2.pass) {
+				  callback(new Error('两次输入密码不一致!'));
+				} else {
+				  callback();
+				}
+			};
+			var validateEmail = (rule, value, callback) => {
+				console.log(rule)
+				console.log(value)
+				// var reg = /^^\d+@{1}\.(com|cn|)/
+				var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+				if (value === '') {
+				  callback(new Error('邮箱不能为空'));
+				} else if (!reg.test(value)) {
+				  callback(new Error('邮箱不正确'));
+				} else {
+				  callback();
+				}
+			};
+			this.rules2.age[0].validator = checkAge
+			this.rules2.pass[0].validator = validatePass
+			this.rules2.checkPass[0].validator = validatePass2
+			this.rules2.email[0].validator = validateEmail
+		},
+		methods: {
+	      submitForm(formName) {
+	      	console.log(this.ruleForm2)
+	        this.$refs[formName].validate((valid) => {
+	          if (valid) {
+	            alert('submit!');
+	          } else {
+	            console.log('error submit!!');
+	            return false;
+	          }
+	        });
+	      },
+	      resetForm(formName) {
+	        this.$refs[formName].resetFields();
+	      }
+	    }
+	})
+
+
+</script>

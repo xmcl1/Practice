@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/javascript">
+	function shuixianhua(){
+		// var len = num.length;
+		var s = [];
+		var ns = [];
+		var count1 = 0;
+		var count2 = 0;
+
+		for(var i=100;i<1000;i++){
+
+			var ge = parseInt(i%10);
+			var shi = parseInt((i%100)/10);
+			var bai = parseInt(i/100);
+
+
+			if(Math.pow(ge,3) + Math.pow(shi,3) + Math.pow(bai,3) == i){
+				count1++;
+				s.push(i);
+			}else{
+				count2++;
+				ns.push(i);
+			}
+		}
+		console.log("水仙花数为（个数为"+count1+"个）：" + s + "\n" + "非水仙花数为（个数为"+count2+"个）：" + ns)
+	}
+
+	shuixianhua()
+</script>

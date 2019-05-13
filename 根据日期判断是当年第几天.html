@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input class="inp" placeholder="例：2019.10.01" type="text">
+</body>
+</html>
+<script type="text/javascript">
+	var inp = document.getElementsByClassName("inp")[0];
+
+	function panduan(str){
+		var arr = str.split(".")
+		console.log(arr)
+		if((arr[0] % 4 == 0 && arr[0] % 100 != 0) || arr[0] % 400 ==0){
+			console.log(arr[0]+"是闰年。")
+		}else{
+			console.log(arr[0]+"不是闰年。")
+		}
+	}
+
+	inp.onchange = function(){
+		var val = inp.value;
+		panduan(val)
+	}
+</script>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 450px;
+			height: 250px;
+			box-shadow:0 0 30px gray;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform:translate(-50%,-50%) scale(0);
+			/*display: none;*/
+			padding: 30px;
+			box-sizing: border-box;
+			transition: all .5s;
+		}
+		h3{
+			margin-top: 0;
+		}
+		p{
+			margin-bottom:30px; 
+			line-height: 80px;
+		}
+		.btns{
+			position: relative;
+		}
+		.btns input:first-child{
+			position: absolute;
+			right: 50px;
+			top: 0;
+		}
+		.btns input:last-child{
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="测试" onclick="testf()">
+	<div id="box">
+		<h3>是否删除</h3>
+		<p>此操作将永久删除文件，确定删除吗？</p>
+		<div class="btns">
+			<input type="button" value="取消" onclick="cancel()">
+			<input type="button" value="确定" onclick="cancel()">
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	function testf(){
+		var div=document.getElementById("box");
+		// div.style.display="block";
+		div.style.transform="translate(-50%,-50%) scale(1)";
+	}
+	function cancel(){
+		var div=document.getElementById("box");
+		// div.style.display="none";
+		div.style.transform="translate(-50%,-50%) scale(0)";
+	}
+
+</script>
